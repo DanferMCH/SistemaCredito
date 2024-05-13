@@ -1,0 +1,20 @@
+body {
+    background: url('/images/image-fondo-1.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100%;
+    background-repeat: no-repeat;
+}
+
+.estilo-panel-agregar{
+    margin: 160px 15px 50px 15px;
+    padding: 20px;
+    background-color: rgba(168, 167, 167, 0.7);
+    border: 1px solid #6d6d6d4d;
+}
+.card{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

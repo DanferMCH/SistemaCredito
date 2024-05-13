@@ -1,0 +1,33 @@
+body {
+    background: url('/images/image-fondo-1.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100%;
+    background-repeat: no-repeat;
+}
+h3{
+    text-align: center;
+    color: darkblue;
+    font-weight: 700;
+}
+.estilo-panel-agregar{
+    margin-top: 160px;
+    padding: 20px;
+    background-color: rgba(168, 167, 167, 0.7);
+    border: 1px solid #6d6d6d4d;
+}
+.form-label{
+    font-weight: bold;
+    color: black;
+}
+.contenedor-datos{
+    margin-top: 50px;
+    padding: 15px;
+    background-color: rgb(205 243 255);
+}
+.espacio-botones{
+    margin-left: 5px;
+    margin-right: 5px;
+}

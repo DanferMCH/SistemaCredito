@@ -1,0 +1,63 @@
+body {
+    background: url('/images/image-fondo-1.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100%;
+    background-repeat: no-repeat;
+}
+.estilo-contenedor {
+    height: 200px;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
+    margin: 5px 2px 5px 2px;
+}
+
+.contenedor-inferior {
+    margin: auto;
+}
+
+.color-texto-monto{
+    color: #fff;
+}
+
+.color-texto-personas{
+    color: #fff;
+}
+.color-texto-personas h1{
+    font-size: 4rem;
+}
+
+@media (max-width: 960px) {
+    .color-texto-personas{
+        width: 60px;
+        height: 60px;
+    }
+    .color-texto-personas h3{
+        font-size: 20px;
+    }
+    .color-texto-personas h1{
+        font-size: 2rem;
+    }
+    .color-texto-monto{
+        width: 60px;
+        height: 60px;
+    }
+    .color-texto-monto h3{
+        font-size: 20px;
+    }
+    .color-texto-monto h1{
+        font-size: 2rem;
+    }
+}
+
+.contenedor-datos{
+    padding: 15px;
+    background-color: rgb(205 243 255);
+}
+.espacio-botones{
+    margin-left: 5px;
+    margin-right: 5px;
+}

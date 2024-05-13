@@ -1,0 +1,14 @@
+body {
+    background: url('/images/image-fondo-1.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100%;
+    background-repeat: no-repeat;
+}
+.contenedor-datos {
+    margin-top: 160px;
+    padding: 15px;
+    background-color: rgb(205 243 255);
+}

@@ -1,0 +1,51 @@
+body {
+    background: url('/images/img-login.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100%;
+    background-repeat: no-repeat;
+}
+.estilo-principal-login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.estilo-login {
+    background-color: #fff;
+    width: 300px;
+    height: 550px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
+
+}
+.estilo-titulo{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: #00BF63;
+    padding: 15px;
+}
+
+h3{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: #fff;
+}
+.formulario-validar{
+    margin: 20px 30px 20px 30px;
+}
+
+.input-ancho{
+    width: auto;
+}
+
+#user,#password{
+    background-color: #DBDDFF;
+}
+.btn-color{
+    background: #004AAD;
+    border: #004AAD;
+}
