@@ -95,7 +95,7 @@
                                             <a class="btn btn-warning" style="height: 40px;"
                                                 href={{ route('cliente.edit', $client->idCliente) }}>Actualizar</a>
 
-                                            <form action="{{ route('cliente.delete', $client->idCliente) }}" method="post"
+                                            <form  id="frm-eliminar-credito" action="{{ route('cliente.delete', $client->idCliente) }}" method="post"
                                                 style="height: 40px;">
                                                 @csrf
                                                 @method('delete')
@@ -157,6 +157,31 @@
                 });
             });
         </script>
-
+        
+    {{-- eliminar credito --}}
+        <script>
+            $('#frm-eliminar-credito').submit(function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: "¿Está seguro?",
+                    text: "Se eliminara el credito del cliente ",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Si, eliminar',
+                    customClass: {
+                        confirmButton: 'btn btn-primary me-3',
+                        cancelButton: 'btn btn-danger'
+                    },
+                    buttonsStyling: false
+                }).then((result) => {
+                    if (result.value) {
+                        this.submit();
+                    }
+                });
+    
+            });
+        </script>
     </body>
+    
+
 @endsection
