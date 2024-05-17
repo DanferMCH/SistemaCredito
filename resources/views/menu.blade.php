@@ -3,8 +3,8 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 @endsection
-@include('components.modalDetallesDatosPersonales')
 @section('content')
 
     <body>
@@ -95,10 +95,14 @@
                                             <a class="btn btn-warning" style="height: 40px;"
                                                 href={{ route('cliente.edit', $client->idCliente) }}>Actualizar</a>
 
-                                            <form  id="frm-eliminar-credito" action="{{ route('cliente.delete', $client->idCliente) }}" method="post"
-                                                style="height: 40px;">
+                                            <form id="frm-eliminar-credito" action="{{ route('cliente.delete') }}"
+                                                method="post" style="height: 40px;">
                                                 @csrf
                                                 @method('delete')
+                                                <input type="hidden" name="delete_monto" id="delete_monto"
+                                                    value="{{ $client->debt }}">
+                                                <input type="hidden" name="delete_id" id="delete_id"
+                                                    value="{{ $client->idCliente }}">
                                                 <button type="submit" class="btn btn-danger">Eliminar</button>
                                             </form>
                                         </div>
@@ -112,6 +116,8 @@
                 </div>
             </div>
         </section>
+
+        @include('components.modalDetallesDatosPersonales')
         
         @if (session('success'))
             <script>
@@ -157,8 +163,8 @@
                 });
             });
         </script>
-        
-    {{-- eliminar credito --}}
+
+        {{-- eliminar credito --}}
         <script>
             $('#frm-eliminar-credito').submit(function(e) {
                 e.preventDefault();
@@ -178,10 +184,32 @@
                         this.submit();
                     }
                 });
-    
+
             });
         </script>
+
+        <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+        <script>
+            $('#tabla-datos').DataTable({
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
+                    "infoFiltered": "(filtrado de _MAX_ entradas totales)",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "first": "Primero",
+                        "previous": "Anterior",
+                        "next": "Siguiente",
+                        "last": "Último"
+                    }
+                }
+            });
+        </script>
+
     </body>
-    
+
 
 @endsection

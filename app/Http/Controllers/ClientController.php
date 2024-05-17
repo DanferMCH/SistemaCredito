@@ -47,12 +47,16 @@ class ClientController extends Controller
 
         return redirect()->route('cliente.create');
     }
-    public function delete($id)
+    public function delete(Request $request)
     {
+        $monto = $request->delete_monto;
 
-        $credito = Credit::where('client_id', $id)->first();
-        $cliente = Client::find($id);
+        if($monto > 0){
+            return redirect()->back()->with('error', 'No es posible eliminar una deuda pediente');
+        }
 
+        $credito = Credit::where('client_id', $request->delete_id)->first();
+        $cliente = Client::find($request->delete_id);
         if ($credito) {
             $credito->delete();
             $cliente->delete();

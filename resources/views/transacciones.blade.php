@@ -7,7 +7,6 @@
 
 @section('content')
 
-    <body>
         <body>
             <section>
                 <div class="container contenedor-datos ">

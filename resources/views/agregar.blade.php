@@ -3,8 +3,8 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/agregar.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 @endsection
-@include('components.modalDetallesDatosPersonales')
 @section('content')
     <section>
         <div class="container estilo-panel-agregar">
@@ -60,7 +60,7 @@
                     <textarea class="form-control" id="CrearDescripcion" name="CrearDescripcion" rows="3">{{ old('CrearDescripcion') }}</textarea>
                 </div>
                 <div class="col-12 text-center">
-                    <button type="submit" class="btn btn-primary" id="btnGuardar">Registrar</button>
+                    <button type="submit" class="btn btn-primary" id="btnGuardar">REGISTRAR CREDITO</button>
                 </div>
             </form>
         </div>
@@ -68,7 +68,7 @@
     <section>
         <div class="container contenedor-datos">
             <div class="table-responsive text-nowrap">
-                <table class="table " id="tabla-datos-agregar">
+                <table class="table" id="tabla-datos-agregar">
                     <caption>Personas con deudas</caption>
                     <thead>
                         <tr class="table-dark">
@@ -92,13 +92,17 @@
                                     <div class="d-flex justify-content-center gap-2">
                                         <button class="btn btn-success" data-bs-toggle="modal"
                                             data-bs-target="#modalAgregar" data-id="{{ $client->idCliente }}"
-                                            data-bs-whatever="@mdo" href="">Detalles</button>
-                                        <a class="btn btn-warning"
-                                            href={{ route('cliente.edit', $client->idCliente) }}>Actualizar</a>
-                                        <form action="{{ route('cliente.delete', $client->idCliente) }}" method="post"
-                                            style="height: 40px;">
+                                            data-bs-whatever="@mdo" style="height: 40px;">Detalles</button>
+                                        <a class="btn btn-warning" href={{ route('cliente.edit', $client->idCliente) }}
+                                            style="height: 40px;">Actualizar</a>
+                                        <form id="frm-eliminar-credito" action="{{ route('cliente.delete') }}"
+                                            method="post" style="height: 40px;">
                                             @csrf
                                             @method('delete')
+                                            <input type="hidden" name="delete_monto" id="delete_monto"
+                                                value="{{ $client->debt }}">
+                                            <input type="hidden" name="delete_id" id="delete_id"
+                                                value="{{ $client->idCliente }}">
                                             <button type="submit" class="btn btn-danger">Eliminar</button>
                                         </form>
 
@@ -112,7 +116,50 @@
         </div>
     </section>
 
+    @include('components.modalDetallesDatosPersonales')
+
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: "{{ session('success') }}",
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "{{ session('error') }}",
+            });
+        </script>
+    @endif
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $('#tabla-datos-agregar').DataTable({
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
+                "infoFiltered": "(filtrado de _MAX_ entradas totales)",
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "previous": "Anterior",
+                    "next": "Siguiente",
+                    "last": "Último"
+                }
+            }
+        });
+    </script>
+
     <script>
         $(document).ready(function() {
             $('.btn-success').click(function() {
@@ -133,6 +180,29 @@
                     }
                 });
             });
+        });
+    </script>
+    {{-- eliminar credito --}}
+    <script>
+        $('#frm-eliminar-credito').submit(function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: "¿Está seguro?",
+                text: "Se eliminara el credito del cliente ",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Si, eliminar',
+                customClass: {
+                    confirmButton: 'btn btn-primary me-3',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            }).then((result) => {
+                if (result.value) {
+                    this.submit();
+                }
+            });
+
         });
     </script>
 

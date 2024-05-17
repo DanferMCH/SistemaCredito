@@ -29,7 +29,7 @@
                             required>
                     </div>
                     <div class="col-12">
-                        <label for="descripcion" class="form-label">Descripcion *opcional*</label>
+                        <label for="descripcion" class="form-label">Descripcion (opcional)</label>
                         <textarea class="form-control" id="AumentarDescripcion" name="AumentarDescripcion"
                             rows="3"></textarea>
                     </div>

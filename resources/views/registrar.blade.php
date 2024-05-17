@@ -3,7 +3,6 @@
 @section('css')
     <link rel="stylesheet" href="/css/registrar.css">
 @endsection
-@include('components.modalActualizarUsuario')
 @section('content')
 
     <section>
@@ -74,9 +73,9 @@
                                                     <div class="d-flex justify-content-center gap-2">
                                                         <button class="btn btn-success" data-bs-toggle="modal"
                                                             data-bs-target="#modalActualizarUsuario"
-                                                            data-id="{{ $user->id }}" data-bs-whatever="@mdo" style="height: 40px;"
-                                                            href="">Actualizar</button>
-                                                        <form action="{{route('user.delete',$user)}}" method="post"
+                                                            data-id="{{ $user->id }}" data-bs-whatever="@mdo"
+                                                            style="height: 40px;" href="">Actualizar</button>
+                                                        <form action="{{ route('user.delete', $user) }}" method="post"
                                                             style="height: 40px;">
                                                             @csrf
                                                             @method('delete')
@@ -95,6 +94,8 @@
             </div>
         </div>
     </section>
+
+    @include('components.modalActualizarUsuario')
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
         $(document).ready(function() {

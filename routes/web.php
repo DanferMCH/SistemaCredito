@@ -25,7 +25,7 @@ Route::get("/cliente/create" ,[ClientController::class, 'create'])-> name('clien
 Route::post("/cliente/store" ,[ClientController::class, 'store'])-> name('cliente.store');
 
 //informacion cliente
-Route::delete("/cliente/delete/{id}" ,[ClientController::class, 'delete'])-> name('cliente.delete');
+Route::delete("/cliente/delete" ,[ClientController::class, 'delete'])-> name('cliente.delete');
 Route::get("/cliente/edit/{id}" ,[ClientController::class, 'edit'])-> name('cliente.edit');
 Route::post("/cliente/update" ,[ClientController::class, 'update'])-> name('cliente.update');
 
