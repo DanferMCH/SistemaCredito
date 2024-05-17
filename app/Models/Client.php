@@ -10,7 +10,5 @@ class Client extends Model
     use HasFactory;
     protected $guarded = [''];
 
-    public function estudios(){ 
-        return $this->hasMany('App\Models\Credit','client_id','id');
-    }
+    
 }

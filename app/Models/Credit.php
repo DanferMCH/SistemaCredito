@@ -11,7 +11,5 @@ class Credit extends Model
 
     protected $guarded = [''];
 
-    public function estadoEstudio(){
-        return $this->belongsTo('App\Models\Client','client_id','id');
-    }
+    
 }

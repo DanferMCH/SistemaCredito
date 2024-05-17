@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\clientController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -8,15 +8,17 @@ use Illuminate\Support\Facades\Route;
 
 //inicio sesion
 Route::view("/",'login')->name('login');
+
+//menu principal
+Route::get("/menu" ,[ClientController::class, 'principal'])-> name('principal');
+
 Route::post("/usuario/auth" ,[UserController::class, 'auth'])-> name('user.auth');
+
 Route::get("/usuario/create" ,[UserController::class, 'create'])-> name('user.create');
 Route::get("/usuario/search/{id}" ,[UserController::class, 'search'])-> name('user.search');
 Route::post("/usuario/store" ,[UserController::class, 'store'])-> name('user.store');
 Route::post("/usuario/update" ,[UserController::class, 'update'])-> name('user.update');
 Route::delete("/usuario/delete/{user}" ,[UserController::class, 'delete'])-> name('user.delete');
-
-//menu principal
-Route::get("/menu" ,[ClientController::class, 'principal'])-> name('principal');
 
 // creacion de cliente 
 Route::get("/cliente/create" ,[ClientController::class, 'create'])-> name('cliente.create');
