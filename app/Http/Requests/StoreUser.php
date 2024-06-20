@@ -24,7 +24,7 @@ class StoreUser extends FormRequest
         return [
             //create
             'name'=>'required|string|max:200',
-            'email'=>'required|string|max:200',
+            'email'=>'required|string|max:200|unique:users',
             'password'=>'required|string|max:10',
            
         ];
